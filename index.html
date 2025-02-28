@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1 INPUT 1 OUTPUT TEMPLATE</title>
+    <style>
+
+
+        /* STYLE FOR THE INPUT FIELD */
+        #charInput {
+            display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 47vh;
+    margin-top: 5vh;
+
+        }
+
+        /* STYLE FOR THE SUBMIT BUTTON */
+        #submitButton {
+            display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    margin-left: 50vh;
+    cursor: pointer;
+    align-items: center;
+    top: 100vh;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace
+
+        }
+
+        /* STYLE FOR THE IMAGE */
+        #displayedImage {
+            display: none; /* This line is mandatory */
+            border-radius: 7px;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+
+    <h2 style="align-items: center;
+    justify-content: center;
+    font-family: 'Courier New', Courier, monospace;
+    margin-top: 30vh;
+    margin-left: 47vh;">ART GENERATOR</h2>
+
+    
+    <!-- INPUT FIELD FOR 1 CHARACTER -->
+    <input type="text" id="charInput" maxlength="1">
+
+    <!-- BUTTON TO DISPLAY IMAGE -->
+    <button onclick="displayImage()" id="submitButton">Show Image</button>
+
+    <!-- IMAGE TO DISPLAY -->
+    <img id="displayedImage" src="" alt="Displayed Image">
+
+
+    <!-- Image Display Script Below -->
+    <script>
+        // Array of images
+        // DIRECTIONS: UPDATE THE URLS WITH THE RELATIVE LINKS OF YOUR IMAGES
+        const images = [
+            "images/A.webp", //A
+            "images/B.png", //B
+            "images/C.jpeg", //C
+            "images/D.jpg", //D
+            "images/E.jpg", //E
+            "images/F.webp", //F
+            "images/G.jpg", //G
+            "images/H.jpg", //H
+            "images/I.avif", //I
+            "images/J.jpg", //J
+            "images/K.webp", //K
+            "images/L.jpg", //L
+            "images/M.jpg", //M
+            "images/N.jpg", //N
+            "images/O.webp", //O
+            "images/P.jpg", //P
+            "images/Q.jpg", //Q
+            "images/R.jpg", //R
+            "images/S.jpg", //S
+            "images/T.jpg", //T
+            "images/U.jpg", //U
+            "images/V.jpg", //V
+            "images/W.jpg", //W
+            "images/X.jpg", //X
+            "images/Y.jpg", //Y
+            "images/Z.jpg"  //Z
+        ];
+
+        function displayImage() {
+            const input = document.getElementById("charInput").value.toUpperCase();
+            const imgElement = document.getElementById("displayedImage");
+            
+            // Assign an image based on character (A-Z)
+            const index = input.charCodeAt(0) - 65; // 'A' is 65 in ASCII
+            if (index >= 0 && index < images.length) {
+                imgElement.src = images[index];
+                imgElement.style.display = "block";
+            } else {
+                /* 
+                alert("Please enter a letter between A and Z.");
+                imgElement.style.display = "none";
+                */
+
+                // IF INVALID INPUT IS ENTERED, DISPLAY ALTERNATE IMAGE
+                imgElement.src = "images/emoji.gif"
+                imgElement.style.display = "block";
+            }
+        }
+    </script>
+
+</body>
+</html>
